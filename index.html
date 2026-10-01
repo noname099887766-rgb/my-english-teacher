@@ -1,1 +1,95 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>My English Teacher</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#06152e;color:white;
+font-family:Arial,sans-serif}
+header{padding:22px 18px;background:#0b2450;
+border-radius:0 0 22px 22px}
+h1{font-size:25px;margin:0 0 7px}
+.sub{color:#b9d5ff;font-style:italic}
+.welcome{background:#123665;border-radius:18px;
+padding:17px;margin-top:20px;display:flex;
+gap:14px;align-items:center}
+.avatar{font-size:48px}
+.welcome p{margin:6px 0;color:#d8e7ff}
+main{padding:18px}
+h2{font-size:19px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{border:0;border-radius:16px;padding:22px 8px;
+color:white;font-size:15px;font-weight:bold;
+min-height:112px}
+.tile span{display:block;font-size:30px;margin-bottom:9px}
+.blue{background:#0865ed}
+.green{background:#079e75}
+.orange{background:#ed8a16}
+.purple{background:#7138df}
+.pink{background:#e52d79}
+.teal{background:#009e9b}
+.panel{background:#102b50;padding:17px;
+border-radius:15px;margin-top:18px}
+button{cursor:pointer}
+nav{position:fixed;bottom:0;left:0;right:0;
+display:flex;justify-content:space-around;
+background:#0c2040;padding:12px 2px;
+border-top:1px solid #29476b}
+nav button{border:0;background:none;color:#b7cbe8;
+font-size:12px}
+nav span{display:block;font-size:21px;margin-bottom:4px}
+#content{padding-bottom:75px}
+</style>
+</head>
+<body>
+<header>
+<h1>📘 My English Teacher</h1>
+<div class="sub">Over by Mohammad Afzal</div>
+<div class="welcome">
+<div class="avatar">👨🏻‍🏫</div>
+<div>
+<strong>Hello! Let's improve your English today!</strong>
+<p>Practice makes progress.</p>
+</div>
+</div>
+</header>
+<main id="content">
+<h2>What do you want to learn?</h2>
+<div class="grid">
+<button class="tile blue" onclick="openPage('Speak & Practice','🎙️ Tap the button to practice speaking English.')"><span>🎙️</span>Speak & Practice</button>
+<button class="tile green" onclick="openPage('Conversation Mode','💬 Practice everyday English conversations.')"><span>💬</span>Conversation Mode</button>
+<button class="tile orange" onclick="openPage('Grammar Correction','✍️ Learn to write correct English sentences.')"><span>📝</span>Grammar Correction</button>
+<button class="tile purple" onclick="openPage('Vocabulary Builder','📚 Learn new words and their meanings.')"><span>📖</span>Vocabulary Builder</button>
+<button class="tile pink" onclick="openPage('Pronunciation','🔊 Listen, repeat and improve.')"><span>🔊</span>Pronunciation</button>
+<button class="tile teal" onclick="openPage('Lessons','🎓 Beginner to Advanced lessons.')"><span>🎓</span>Lessons</button>
+</div>
+<div class="panel">
+<h2>⭐ Daily Challenge</h2>
+<p>Speak about your dream in 3-5 sentences.</p>
+<button class="tile blue" style="width:100%;min-height:48px"
+onclick="openPage('Daily Challenge','Speak about your dream in 3-5 sentences.')">Start Challenge</button>
+</div>
+</main>
+<nav>
+<button onclick="home()"><span>⌂</span>Home</button>
+<button onclick="openPage('Practice','Choose a speaking activity.')"><span>🎙️</span>Practice</button>
+<button onclick="openPage('Progress','Your learning progress will appear here.')"><span>📊</span>Progress</button>
+<button onclick="openPage('More','Settings and more lessons.')"><span>☰</span>More</button>
+</nav>
+<script>
+const original=document.getElementById('content').innerHTML;
+function openPage(title,description){
+document.getElementById('content').innerHTML=
+'<button onclick="home()" style="background:#17385f;color:white;border:0;padding:12px;border-radius:10px">← Back</button>'+
+'<div class="panel"><h2>'+title+'</h2><p>'+description+'</p></div>';
+}
+function home(){
+document.getElementById('content').innerHTML=original;
+}
+</script>
+</body>
+</html>
+
