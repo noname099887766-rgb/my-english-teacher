@@ -2,94 +2,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101d42">
 <title>My English Teacher</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#06152e;color:white;
-font-family:Arial,sans-serif}
-header{padding:22px 18px;background:#0b2450;
-border-radius:0 0 22px 22px}
-h1{font-size:25px;margin:0 0 7px}
-.sub{color:#b9d5ff;font-style:italic}
-.welcome{background:#123665;border-radius:18px;
-padding:17px;margin-top:20px;display:flex;
-gap:14px;align-items:center}
-.avatar{font-size:48px}
-.welcome p{margin:6px 0;color:#d8e7ff}
-main{padding:18px}
-h2{font-size:19px}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f5ff;color:#172448}
+header{background:linear-gradient(135deg,#101d42,#254fbd);color:white;padding:23px 18px 28px;border-radius:0 0 25px 25px}
+header h1{font-size:23px;margin:5px 0}
+header p{color:#dce6ff;margin:7px 0}
+.xp{background:#ffffff22;padding:12px;border-radius:13px;margin-top:16px}
+.bar{height:8px;background:#ffffff44;border-radius:10px;margin-top:8px;overflow:hidden}
+.bar span{display:block;background:#68edbd;height:100%;width:0}
+main{padding:17px;max-width:700px;margin:auto;padding-bottom:90px}
+h2{font-size:21px}
+h3{margin:5px 0 10px}
+.card{background:white;border-radius:17px;padding:17px;margin:13px 0;box-shadow:0 4px 16px #1724480c}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.tile{border:0;border-radius:16px;padding:22px 8px;
-color:white;font-size:15px;font-weight:bold;
-min-height:112px}
-.tile span{display:block;font-size:30px;margin-bottom:9px}
-.blue{background:#0865ed}
-.green{background:#079e75}
-.orange{background:#ed8a16}
-.purple{background:#7138df}
-.pink{background:#e52d79}
-.teal{background:#009e9b}
-.panel{background:#102b50;padding:17px;
-border-radius:15px;margin-top:18px}
+.tile{background:white;border:0;border-radius:16px;padding:18px 10px;text-align:left;box-shadow:0 4px 14px #1724480c;color:#172448;min-height:105px;font-size:15px;font-weight:bold}
+.tile span{display:block;font-size:27px;margin-bottom:10px}
 button{cursor:pointer}
-nav{position:fixed;bottom:0;left:0;right:0;
-display:flex;justify-content:space-around;
-background:#0c2040;padding:12px 2px;
-border-top:1px solid #29476b}
-nav button{border:0;background:none;color:#b7cbe8;
-font-size:12px}
-nav span{display:block;font-size:21px;margin-bottom:4px}
-#content{padding-bottom:75px}
+.primary{background:#2454c5;color:white;border:0;padding:13px 17px;border-radius:12px;font-weight:bold;margin:5px 4px 5px 0}
+.secondary{background:#e9efff;color:#214bb2;border:0;padding:12px 15px;border-radius:11px;font-weight:bold;margin:5px 4px 5px 0}
+.option{display:block;width:100%;text-align:left;background:#f2f5ff;border:2px solid transparent;padding:13px;border-radius:11px;margin:9px 0;color:#172448}
+.option:focus,.option:hover{border-color:#4777e8}
+input{width:100%;padding:13px;border:1px solid #ccd5ec;border-radius:10px;font-size:16px;margin:8px 0}
+nav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 2px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -3px 15px #17244812}
+nav button{border:0;background:white;color:#52617f;font-size:12px;padding:5px}
+nav button b{display:block;font-size:20px;margin-bottom:3px}
+nav button.active{color:#2454c5;font-weight:bold}
+.muted{color:#65718c;line-height:1.5}
+.word{font-size:22px;font-weight:bold;color:#214bb2}
+.hide{display:none}
+footer{text-align:center;color:#7c87a1;font-size:12px;padding:20px}
 </style>
 </head>
 <body>
 <header>
-<h1>📘 My English Teacher</h1>
-<div class="sub">Over by Mohammad Afzal</div>
-<div class="welcome">
-<div class="avatar">👨🏻‍🏫</div>
-<div>
-<strong>Hello! Let's improve your English today!</strong>
-<p>Practice makes progress.</p>
-</div>
-</div>
+  <div>🎓 MY ENGLISH TEACHER</div>
+  <h1>Learn English Every Day</h1>
+  <p>Practice a little. Improve every day.</p>
+  <div class="xp">
+    <div>⭐ <b id="xp">0</b> XP &nbsp; | &nbsp; 🔥 <b id="days">0</b> practice days</div>
+    <div class="bar"><span id="bar"></span></div>
+    <small id="level">Beginner • Keep learning!</small>
+  </div>
 </header>
-<main id="content">
-<h2>What do you want to learn?</h2>
-<div class="grid">
-<button class="tile blue" onclick="openPage('Speak & Practice','🎙️ Tap the button to practice speaking English.')"><span>🎙️</span>Speak & Practice</button>
-<button class="tile green" onclick="openPage('Conversation Mode','💬 Practice everyday English conversations.')"><span>💬</span>Conversation Mode</button>
-<button class="tile orange" onclick="openPage('Grammar Correction','✍️ Learn to write correct English sentences.')"><span>📝</span>Grammar Correction</button>
-<button class="tile purple" onclick="openPage('Vocabulary Builder','📚 Learn new words and their meanings.')"><span>📖</span>Vocabulary Builder</button>
-<button class="tile pink" onclick="openPage('Pronunciation','🔊 Listen, repeat and improve.')"><span>🔊</span>Pronunciation</button>
-<button class="tile teal" onclick="openPage('Lessons','🎓 Beginner to Advanced lessons.')"><span>🎓</span>Lessons</button>
-</div>
-<div class="panel">
-<h2>⭐ Daily Challenge</h2>
-<p>Speak about your dream in 3-5 sentences.</p>
-<button class="tile blue" style="width:100%;min-height:48px"
-onclick="openPage('Daily Challenge','Speak about your dream in 3-5 sentences.')">Start Challenge</button>
-</div>
+
+<main>
+<section id="home">
+  <h2>👋 Welcome, Learner!</h2>
+  <p class="muted">Choose what you want to practice today.</p>
+  <div class="grid">
+    <button class="tile" onclick="show('lessons')"><span>📘</span>English Lessons</button>
+    <button class="tile" onclick="show('vocab')"><span>📚</span>Vocabulary</button>
+    <button class="tile" onclick="show('quiz')"><span>📝</span>Daily Quiz</button>
+    <button class="tile" onclick="show('grammar')"><span>✍️</span>Grammar</button>
+    <button class="tile" onclick="show('speak')"><span>🗣️</span>Speaking</button>
+    <button class="tile" onclick="show('progress')"><span>🏆</span>My Progress</button>
+  </div>
+  <div class="card">
+    <h3>🎯 Today's Challenge</h3>
+    <p class="muted">Complete a short quiz and earn XP.</p>
+    <button class="primary" onclick="show('quiz')">Start Challenge →</button>
+  </div>
+</section>
+
+<section id="lessons" class="hide">
+  <h2>📘 English Lessons</h2>
+  <p class="muted">Read the lesson and practice speaking.</p>
+  <div id="lessonList"></div>
+  <div id="lessonDetail" class="card hide"></div>
+</section>
+
+<section id="vocab" class="hide">
+  <h2>📚 Vocabulary</h2>
+  <p class="muted">Learn useful English words with Hindi meanings.</p>
+  <div id="wordList"></div>
+</section>
+
+<section id="quiz" class="hide">
+  <h2>📝 English Quiz</h2>
+  <div class="card">
+    <div class="muted" id="qcount"></div>
+    <h3 id="question"></h3>
+    <div id="options"></div>
+    <p id="feedback" aria-live="polite"></p>
+    <button id="next" class="primary hide" onclick="nextQ()">Next Question →</button>
+  </div>
+</section>
+
+<section id="grammar" class="hide">
+  <h2>✍️ Grammar Practice</h2>
+  <div class="card">
+    <h3>Choose the correct sentence</h3>
+    <p class="muted">Learn basic English grammar.</p>
+    <div id="grammarOptions"></div>
+    <p id="grammarFeedback" aria-live="polite"></p>
+    <button class="primary" onclick="newGrammar()">Next Practice</button>
+  </div>
+  <div class="card">
+    <h3>💡 Quick Tip</h3>
+    <p>Use <b>am</b> with I, <b>is</b> with he, she, it and <b>are</b> with you, we, they.</p>
+  </div>
+</section>
+
+<section id="speak" class="hide">
+  <h2>🗣️ Speaking Practice</h2>
+  <div class="card">
+    <h3>Listen and repeat</h3>
+    <p class="muted">Tap the speaker to hear a sentence, then speak it aloud.</p>
+    <div class="word" id="speakSentence">How are you?</div>
+    <button class="primary" onclick="speakText(document.getElementById('speakSentence').textContent)">🔊 Listen</button>
+    <button class="secondary" onclick="nextSpeak()">Next sentence</button>
+  </div>
+  <div class="card">
+    <h3>🎙️ Speaking microphone</h3>
+    <p class="muted">If supported by your browser, you can try speech recognition. Microphone access may require internet and permission.</p>
+    <button class="primary" onclick="listen()">🎤 Start Speaking</button>
+    <p id="heard" aria-live="polite"></p>
+  </div>
+  <div class="card">
+    <h3>💬 Everyday Conversation</h3>
+    <p><b>Teacher:</b> What is your name?</p>
+    <p><b>You:</b> My name is Afzal.</p>
+    <p><b>Teacher:</b> How are you?</p>
+    <p><b>You:</b> I am fine, thank you.</p>
+    <button class="secondary" onclick="speakText('Hello! What is your name? How are you today?')">🔊 Listen to conversation</button>
+  </div>
+</section>
+
+<section id="progress" class="hide">
+  <h2>🏆 My Progress</h2>
+  <div class="card">
+    <h3>⭐ <span id="totalXP">0</span> XP earned</h3>
+    <p class="muted">Your learning progress is saved on this device.</p>
+    <div class="bar" style="background:#e8edfa"><span id="progressBar" style="background:#2454c5"></span></div>
+    <p id="progressText"></p>
+    <p>🔥 Practice days: <b id="totalDays">0</b></p>
+    <p>✅ Correct quiz answers: <b id="correctCount">0</b></p>
+  </div>
+  <div class="card">
+    <h3>Keep going!</h3>
+    <p class="muted">Practice daily to improve your English step by step.</p>
+    <button class="primary" onclick="show('lessons')">Continue Learning</button>
+  </div>
+</section>
+<footer>My English Teacher • Over by Mohammad Afzal</footer>
 </main>
+
 <nav>
-<button onclick="home()"><span>⌂</span>Home</button>
-<button onclick="openPage('Practice','Choose a speaking activity.')"><span>🎙️</span>Practice</button>
-<button onclick="openPage('Progress','Your learning progress will appear here.')"><span>📊</span>Progress</button>
-<button onclick="openPage('More','Settings and more lessons.')"><span>☰</span>More</button>
+  <button class="active" data-nav="home" onclick="show('home')"><b>⌂</b>Home</button>
+  <button data-nav="lessons" onclick="show('lessons')"><b>📘</b>Lessons</button>
+  <button data-nav="vocab" onclick="show('vocab')"><b>📚</b>Words</button>
+  <button data-nav="quiz" onclick="show('quiz')"><b>📝</b>Quiz</button>
+  <button data-nav="progress" onclick="show('progress')"><b>🏆</b>Progress</button>
 </nav>
+
 <script>
-const original=document.getElementById('content').innerHTML;
-function openPage(title,description){
-document.getElementById('content').innerHTML=
-'<button onclick="home()" style="background:#17385f;color:white;border:0;padding:12px;border-radius:10px">← Back</button>'+
-'<div class="panel"><h2>'+title+'</h2><p>'+description+'</p></div>';
+const $=id=>document.getElementById(id);
+const saved=JSON.parse(localStorage.getItem('metProgress')||'{}');
+let state={xp:saved.xp||0,days:saved.days||0,correct:saved.correct||0,last:saved.last||''};
+
+function save(){
+  localStorage.setItem('metProgress',JSON.stringify(state));
+  updateProgress();
 }
-function home(){
-document.getElementById('content').innerHTML=original;
+function earn(points){
+  const today=new Date().toLocaleDateString();
+  if(state.last!==today){state.days++;state.last=today;}
+  state.xp+=points;
+  save();
 }
+function updateProgress(){
+  $('xp').textContent=state.xp;
+  $('totalXP').textContent=state.xp;
+  $('days').textContent=state.days;
+  $('totalDays').textContent=state.days;
+  $('correctCount').textContent=state.correct;
+  const pct=state.xp%100;
+  $('bar').style.width=pct+'%';
+  $('progressBar').style.width=pct+'%';
+  $('level').textContent='Level '+(Math.floor(state.xp/100)+1)+' • '+(100-pct)+' XP to next level';
+  $('progressText').textContent=pct+' / 100 XP to next level';
+}
+function show(id){
+  document.querySelectorAll('main section').forEach(s=>s.classList.add('hide'));
+  $(id).classList.remove('hide');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));
+  if(id==='progress')updateProgress();
+  window.scrollTo(0,0);
+}
+
+const lessons=[
+{title:'Greetings',body:'Hello means नमस्ते. Good morning means सुप्रभात. How are you? means आप कैसे हैं? You can reply: I am fine, thank you.',example:'Hello! How are you? — I am fine, thank you.'},
+{title:'Introducing Yourself',body:'Use simple sentences to introduce yourself. My name is... I am from... I am a student.',example:'My name is Afzal. I am from India. I am a student.'},
+{title:'Daily Routine',body:'Use present simple to talk about habits. I wake up early. I go to school. I study English every day.',example:'I wake up at 6 AM. I study English.'},
+{title:'Common Questions',body:'What is your name? Where do you live? What do you do? Practice answering in complete sentences.',example:'Where do you live? — I live in India.'},
+{title:'Talking About Likes',body:'Use I like... to talk about things you enjoy. Use I do not like... for things you dislike.',example:'I like reading books. I do not like wasting time.'}
+];
+function renderLessons(){
+  $('lessonList').innerHTML=lessons.map((l,i)=>`<div class="card"><h3>${i+1}. ${l.title}</h3><p class="muted">${l.body.slice(0,75)}...</p><button class="secondary" onclick="openLesson(${i})">Study Lesson</button></div>`).join('');
+}
+function openLesson(i){
+  const l=lessons[i],d=$('lessonDetail');
+  d.classList.remove('hide');
+  d.innerHTML=`<h3>${l.title}</h3><p>${l.body}</p><p><b>Example:</b> ${l.example}</p><button class="secondary" onclick="speakText(${JSON.stringify(l.example).replace(/</g,'\\u003c')})">🔊 Listen</button><button class="primary" onclick="earn(10);alert('Lesson completed! +10 XP')">Complete +10 XP</button>`;
+  d.scrollIntoView({behavior:'smooth'});
+}
+
+const words=[
+['Beautiful','सुंदर'],['Important','महत्वपूर्ण'],['Improve','सुधारना'],['Learn','सीखना'],['Brave','बहादुर'],['Honest','ईमानदार'],['Quickly','जल्दी से'],['Friend','दोस्त'],['Knowledge','ज्ञान'],['Practice','अभ्यास'],['Believe','विश्वास करना'],['Success','सफलता']
+];
+function renderWords(){
+  $('wordList').innerHTML=words.map((w,i)=>`<div class="card"><div class="word">${w[0]}</div><p class="muted">${w[1]}</p><button class="secondary" onclick="speakText(${JSON.stringify(w[0])})">🔊 Listen</button><button class="secondary" onclick="earn(1)">Learned ✓</button></div>`).join('');
+}
+
+const questions=[
+{q:'What is the meaning of “Beautiful”?',o:['सुंदर','तेज','कमजोर','लंबा'],a:0},
+{q:'Choose the correct sentence.',o:['She are happy.','She is happy.','She am happy.','She be happy.'],a:1},
+{q:'What is the opposite of “Big”?',o:['Tall','Large','Small','Wide'],a:2},
+{q:'Fill in the blank: I ___ a student.',o:['is','are','am','be'],a:2},
+{q:'What does “Thank you” mean?',o:['अलविदा','धन्यवाद','नमस्ते','माफ करना'],a:1},
+{q:'Choose the correct plural of “Book”.',o:['Bookes','Books','Bookies','Book'],a:1},
+{q:'Fill in the blank: He ___ to school.',o:['go','going','goes','gone'],a:2}
+];
+let qi=0,answered=false;
+function renderQ(){
+  const q=questions[qi];answered=false;
+  $('qcount').textContent=`Question ${qi+1} of ${questions.length}`;
+  $('question').textContent=q.q;
+  $('feedback').textContent='';
+  $('next').classList.add('hide');
+  $('options').innerHTML=q.o.map((v,i)=>`<button class="option" onclick="answer(${i})">${String.fromCharCode(65+i)}. ${v}</button>`).join('');
+}
+function answer(i){
+  if(answered)return;answered=true;
+  const q=questions[qi],buttons=$('options').querySelectorAll('button');
+  buttons[q.a].style.borderColor='#16a36a';
+  if(i===q.a){$('feedback').textContent='✅ Correct! +10 XP';state.correct++;earn(10);}
+  else{$('feedback').textContent='❌ Correct answer: '+q.o[q.a];}
+  $('next').textContent=qi===questions.length-1?'Finish Quiz':'Next Question →';
+  $('next').classList.remove('hide');
+}
+function nextQ(){
+  qi++;
+  if(qi>=questions.length){alert('Quiz completed! Great work.');qi=0;show('home');}
+  renderQ();
+}
+
+const grammar=[
+{q:'She ___ my sister.',o:['am','is','are'],a:1},
+{q:'They ___ playing cricket.',o:['is','am','are'],a:2},
+{q:'I ___ happy today.',o:['am','are','is'],a:0},
+{q:'He ___ English every day.',o:['study','studies','studying'],a:1},
+{q:'We ___ friends.',o:['is','am','are'],a:2}
+];
+let gi=0;
+function newGrammar(){
+  const g=grammar[gi%grammar.length];gi++;
+  $('grammarFeedback').textContent='';
+  $('grammarOptions').innerHTML=`<p><b>${g.q}</b></p>`+g.o.map((v,i)=>`<button class="option" onclick="grammarAnswer(${i},${g.a})">${v}</button>`).join('');
+}
+function grammarAnswer(i,a){
+  $('grammarFeedback').textContent=i===a?'✅ Correct! +5 XP':'❌ Try again. Correct answer: '+grammar[(gi-1)%grammar.length].o[a];
+  if(i===a)earn(5);
+  $('grammarOptions').querySelectorAll('button').forEach(b=>b.disabled=true);
+}
+const sentences=['How are you?','My name is Afzal.','I want to learn English.','Could you please help me?','I practice English every day.'];
+let si=0;
+function nextSpeak(){si=(si+1)%sentences.length;$('speakSentence').textContent=sentences[si];}
+function speakText(t){
+  if(!('speechSynthesis'in window)){alert('Text to speech is not supported in this browser.');return;}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.85;speechSynthesis.speak(u);
+}
+function listen(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){$('heard').textContent='Speech recognition is not supported by this browser. Try a supported browser.';return;}
+  const r=new SR();r.lang='en-US';r.interimResults=false;
+  $('heard').textContent='Listening... Please speak.';
+  r.onresult=e=>{$('heard').textContent='You said: '+e.results[0][0].transcript;};
+  r.onerror=()=>{$('heard').textContent='Microphone error. Check permission and try again.';};
+  r.start();
+}
+renderLessons();renderWords();renderQ();newGrammar();updateProgress();
 </script>
 </body>
 </html>
+
 
