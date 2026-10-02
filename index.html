@@ -302,6 +302,35 @@ function listen(){
   r.onerror=()=>{$('heard').textContent='Microphone error. Check permission and try again.';};
   r.start();
 }
+  async function askAI(){
+  const input=$('aiInput');
+  const chat=$('aiChat');
+  const question=input.value.trim();
+
+  if(!question)return;
+
+  chat.innerHTML+=`<p><b>You:</b> ${question}</p>`;
+  input.value='';
+  chat.innerHTML+=`<p id="aiLoading">🤔 Thinking...</p>`;
+
+  try{
+    const response=await fetch('https://my-english-teacher-api.noname099887766.workers.dev',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({message:question})
+    });
+
+    const data=await response.json();
+    $('aiLoading')?.remove();
+
+    chat.innerHTML+=`<p><b>🤖 Teacher:</b> ${data.reply||data.response||data.message||'Sorry, I could not answer.'}</p>`;
+  }catch(error){
+    $('aiLoading')?.remove();
+    chat.innerHTML+=`<p>❌ AI connection error. Please try again.</p>`;
+  }
+
+  chat.scrollTop=chat.scrollHeight;
+  }
 renderLessons();renderWords();renderQ();newGrammar();updateProgress();
 </script>
 </body>
